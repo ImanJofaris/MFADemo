@@ -1,8 +1,3 @@
-
-
-Here's an updated version of the README file that includes instructions on how to run database migrations:
-
-
 **README**
 
 # MFADemo Project
