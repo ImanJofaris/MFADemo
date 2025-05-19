@@ -15,7 +15,7 @@ This project is a web application built using ASP.NET Core. It provides a basic 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/MFADemo.git
+git clone https://github.com/ImanJofaris/MFADemo.git
 ```
 2. Navigate to the project directory:
 ```bash
