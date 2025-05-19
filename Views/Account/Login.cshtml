@@ -1,0 +1,40 @@
+﻿@using MFADemo.Controllers
+@model LoginViewModel
+
+<h2>Login</h2>
+
+<form asp-controller="Account" asp-action="Login" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="UsernameOrEmail"></label>
+        <input asp-for="UsernameOrEmail" class="form-control" />
+        <span asp-validation-for="UsernameOrEmail" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" type="password" value="@Model?.Password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    
+    @if (Model?.RequiresMfa == true)
+    {
+        <div class="form-group">
+            <label asp-for="MfaCode">MFA Verification Code</label>
+            <input asp-for="MfaCode" class="form-control" />
+            <span asp-validation-for="MfaCode" class="text-danger"></span>
+        </div>
+    }
+    
+    <div class="form-group">
+        <div class="checkbox">
+            <label>
+                <input asp-for="RememberMe" /> @Html.DisplayNameFor(m => m.RememberMe)
+            </label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Log in</button>
+</form>
+
+<p>
+    Don't have an account? <a asp-action="Signup">Sign up</a>
+</p>

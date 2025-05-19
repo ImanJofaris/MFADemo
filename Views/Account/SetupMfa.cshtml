@@ -1,0 +1,33 @@
+﻿@using MFADemo.Controllers
+@model MfaSetupViewModel
+
+<h2>Set Up Google Authenticator</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <ol>
+            <li>Download the Google Authenticator app from your app store</li>
+            <li>Open the app and scan the QR code or enter the key manually</li>
+            <li>Enter the verification code displayed in the app below</li>
+        </ol>
+
+        <div class="text-center mb-4">
+            <img src="@Model.QrCodeImageUrl" alt="QR Code" class="img-fluid" />
+        </div>
+
+        <div class="mb-4">
+            <h4>Manual Entry Key (if QR code doesn't work):</h4>
+            <code>@Model.ManualEntryKey</code>
+        </div>
+
+        <form asp-action="SetupMfa" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="VerificationCode"></label>
+                <input asp-for="VerificationCode" class="form-control" />
+                <span asp-validation-for="VerificationCode" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Verify and Enable MFA</button>
+        </form>
+    </div>
+</div>
